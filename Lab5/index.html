@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<h3>Check whether the given word is palindrome or not</h3>
+	<div>
+        Enter Word: <input type="text" ng-model="word" />
+  </div>
+	
+	<form class="form-horizontal" role="form" ng-submit="addRow()">
+		<div class="form-group">								
+			<div style="padding-left:110px">
+				<input type="submit" value="Submit" class="btn btn-primary"/>
+			</div>
+		</div>
+	</form>
+	<br>
+	<div ng-if="palicheck()">The Given word <b>{{word}}</b> is palindrome</div>
+  <div ng-if="!palicheck()">The Given word <b>{{word}}</b> is not palindrome</div>
+	
+	<table>
+  <tr ng-repeat="x in palindromes">
+    <td>{{ x.name }}</td>
+  </tr>
+</table>
+	
+</div>
+
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+			$scope.word = "Enter a word";
+			
+			$scope.palindromes = [
+				{'name': 'a'},
+				{'name': 'bab'},
+			];
+			
+			$scope.palicheck = function () {
+					var word = $scope.word;
+					var revword = word.split('').reverse().join('');
+					
+					return revword == word;
+			};
+			
+			$scope.addRow = function(){
+				if($scope.palicheck()){
+					$scope.palindromes.push({ 'name': $scope.word });
+					$scope.word='';
+				}
+			};
+	});
+</script>
+
+</body>
+</html>
