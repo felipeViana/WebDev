@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html> 
+<head>
+	<button onclick="displayDate()">The time is?</button>
+	<p id="demo">A Paragraph</p>
+	<button type="button" onclick="myFunction()">Try it</button>
+
+	<script>
+		function myFunction() {
+			document.getElementById("demo").innerHTML = 'Mudou';
+		}
+		
+		function displayDate() {
+			var heading = document.createElement("p");
+			var heading_text = document.createTextNode(Date()); 
+			heading.appendChild(heading_text);
+			
+			document.body.appendChild(heading);
+		}
+		
+		// run this function when the document is loaded 
+		window.onload = function() {
+
+			// create a couple of elements in an otherwise empty HTML page 
+			var heading = document.createElement("h1");
+			var heading_text = document.createTextNode("This is the h1 head"); 
+			heading.appendChild(heading_text); 
+			
+			var heading2 = document.createElement("h2");
+			var heading_text2 = document.createTextNode("This is the h2 head"); 
+			heading2.appendChild(heading_text2); 
+			
+			document.body.appendChild(heading);
+			document.body.appendChild(heading2);
+			
+			//removing h1 from body
+			document.body.removeChild(heading);
+		}
+	</script>
+</head> 
+
+<body>
+</body> 
+</html>
